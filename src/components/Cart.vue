@@ -1,0 +1,48 @@
+<template>
+  <ul class="list-group ulfixed">
+    <li class="list-group-item bg-success">
+      <span class="item-name text-white">Item Name</span>
+      <span class="item-price float-right text-white">Price</span>
+    </li>
+
+    <hr />
+
+    <li v-for="(item, index) in cartItem" :key="index" class="list-group-item">
+      <span class="item-name">{{item.title}}</span>
+      <span class="item-price float-right">{{item.price}}</span>
+    </li>
+
+    <hr />
+
+    <li class="list-group-item bg-primary text-white">
+      <span class="item-name">Total</span>
+      <span class="item-price float-right">${{totalPrice}}</span>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  props: ['cartItem'],
+  mounted() {
+    //console.log(this.cartItem)
+  },
+  computed: {
+    totalPrice() {
+      let total = 0
+      this.cartItem.forEach(e => {
+        let spl = e.price.split('$');
+        let finalspl = parseFloat(spl[1]);
+
+        total += finalspl
+        //console.log(finalspl)
+      })
+
+      return total
+    }
+  }
+}
+</script>
+
+<style>
+</style>

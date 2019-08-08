@@ -1,0 +1,19 @@
+.mainappbody {
+  margin-top: 10px;
+}
+
+.inventory-space {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inventory-space-img {
+  width: 286px;
+  height: 250px;
+}
+
+.ulfixed {
+  position: fixed;
+}
+.ulfixed li:nth-child(even) {background: #CCC}
+.ulfixed li:nth-child(odd) {background: #FFF}
