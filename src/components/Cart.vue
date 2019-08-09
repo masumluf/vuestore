@@ -10,6 +10,7 @@
     <li v-for="(item, index) in cartItem" :key="index" class="list-group-item">
       <span class="item-name">{{item.title}}</span>
       <span class="item-price float-right">{{item.price}}</span>
+      <a href @click.prevent="itemRemove(index)">Remove</a>
     </li>
 
     <hr />
@@ -39,6 +40,11 @@ export default {
       })
 
       return total
+    }
+  },
+  methods: {
+    itemRemove(index) {
+      this.$emit('itemRemoved', index);
     }
   }
 }

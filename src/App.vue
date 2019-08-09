@@ -1,15 +1,25 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <router-link :to="{path:'/'}">Home</router-link>
+    <router-link :to="{path:'/about/1'}">About 1</router-link>
+    <router-link :to="{path:'/about/2'}">About 2</router-link>
+    <router-link :to="{path:'/about/3'}">About 3</router-link>
+    <router-link :to="{path:'/about/4'}">About 4</router-link>
+
+    <router-view></router-view>
+
+    <!-- <div id="app">
+    <navbar @searchKey="search"></navbar>
     <div class="row mainappbody">
       <div class="col-9">
         <inventory @newItemClick="addCartItem" :items="items"></inventory>
       </div>
 
       <div class="col-3">
-        <cart :cartItem="cart"></cart>
+        <cart @itemRemoved="removeItem" :cartItem="cart"></cart>
       </div>
     </div>
+    </div>-->
   </div>
 </template>
 
@@ -39,6 +49,15 @@ export default {
   methods: {
     addCartItem(item) {
       this.cart.push(item)
+    },
+    removeItem(index) {
+      this.cart.splice(index, 1)
+    },
+    search(key) {
+      //console.log(key);
+      this.items = data.filter(item => {
+        return item.title.toLowerCase().indexOf(key.toLowerCase()) !== -1;
+      })
     }
   }
 }
