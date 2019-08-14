@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand text-white">Store</a>
+    <router-link class="navbar-brand text-white" :to="{path:'/'}">Store</router-link>
     <form @submit.prevent="formSearch" class="form-inline">
       <input
         class="form-control mr-sm-2"

@@ -7,7 +7,7 @@
 
     <hr />
 
-    <li v-for="(item, index) in cartItem" :key="index" class="list-group-item">
+    <li v-for="(item, index) in items" :key="index" class="list-group-item">
       <span class="item-name">{{item.title}}</span>
       <span class="item-price float-right">{{item.price}}</span>
       <a href @click.prevent="itemRemove(index)">Remove</a>
@@ -24,29 +24,29 @@
 
 <script>
 export default {
-  props: ['cartItem'],
-  mounted() {
-    //console.log(this.cartItem)
-  },
+  mounted() { },
   computed: {
+    items() {
+      return this.$store.getters.getCart;
+    },
     totalPrice() {
       let total = 0
-      this.cartItem.forEach(e => {
-        let spl = e.price.split('$');
-        let finalspl = parseFloat(spl[1]);
+      this.items.forEach(e => {
+        // let spl = e.price.split('$');
+        // let finalspl = parseFloat(spl[1]);
 
-        total += finalspl
-        //console.log(finalspl)
+        total += parseFloat(e.price)
       })
 
-      return total
+
+      return total.toFixed(2)
     }
   },
   methods: {
     itemRemove(index) {
-      this.$emit('itemRemoved', index);
+      this.$store.commit('itemRemoved', index);
     }
-  }
+  },
 }
 </script>
 

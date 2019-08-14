@@ -22,9 +22,16 @@ const router = new VueRouter({
   routes
 })
 
-/* eslint-disable no-new */
+import Vuex from 'vuex'
+Vue.use(Vuex)
+import {
+  storeage
+} from './store/index'
+
+const store = new Vuex.Store(storeage)
 new Vue({
   el: '#app',
+  store,
   router,
   components: {
     App
