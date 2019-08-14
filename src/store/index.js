@@ -23,7 +23,7 @@ export const storeage = {
       //   state.cart.push(item)
       // }
       state.cart.forEach(c => {
-        if (c.id === item.id && c.lenght !== 0) {
+        if (c.id === item.id) {
           console.log('item found');
         } else {
           state.cart.push(item)
