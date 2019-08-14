@@ -19,18 +19,26 @@ export const storeage = {
       store.cart.splice(payload, 1)
     },
     checkItem(state, item) {
-      // if (state.cart.length < 1) {
-      //   state.cart.push(item)
-      // }
+      if (state.cart.length === 0) {
+        state.cart.push(item)
+        return true
+      }
+
       state.cart.forEach(c => {
         if (c.id === item.id) {
-          console.log('item found');
+          console.log('already added')
+          return false
         } else {
+          console.log('i triggered')
           state.cart.push(item)
         }
       })
       //console.log(state.cart);
       //return result
+
+    },
+    logdata() {
+      console.log(state.cart);
     }
   }
 }
